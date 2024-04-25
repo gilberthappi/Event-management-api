@@ -1,6 +1,6 @@
-import { TOUR } from '../../models';
+import { EVENT } from '../../models';
 
-export const getTours = async (req, res) => {
+export const getEvent = async (req, res) => {
   try {
     const { fieldName, value } = req.query;
     let query = {};
@@ -11,7 +11,7 @@ export const getTours = async (req, res) => {
     let limit = parseInt(req.query.limit);
     let skipIndex = (page - 1) * limit;
     let results = {};
-    let count = await TOUR.countDocuments();
+    let count = await EVENT.countDocuments();
     if (page === 1) {
       results.previous = null;
       results.next = {
@@ -33,11 +33,8 @@ export const getTours = async (req, res) => {
     results.totalEntries = count;
     results.currentPage = page;
     results.limit = limit;
-    results.data = await TOUR.find().limit(limit).skip(skipIndex);
+    results.data = await EVENT.find().limit(limit).skip(skipIndex);
     res.status(200).json(results);
-
-    // const data = await TOUR.find(query);
-    // res.status(200).json(data);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });

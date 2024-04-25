@@ -1,6 +1,6 @@
-import { TOUR } from '../../models';
+import { EVENT } from '../../models';
 
-export const updateTour = async (req, res) => {
+export const updateEvent = async (req, res) => {
   try {
     const { fieldName, value } = req.query;
     const updatedFields = req.body;
@@ -8,7 +8,7 @@ export const updateTour = async (req, res) => {
     let query = {};
     query[fieldName] = value;
     
-    let updatedElement = await TOUR.updateMany(query, updatedFields, {
+    let updatedElement = await EVENT.updateMany(query, updatedFields, {
       new: true,
       runValidators: true,
     });

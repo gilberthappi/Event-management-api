@@ -1,6 +1,6 @@
-import { TOUR } from '../../models';
+import { EVENT } from '../../models';
 
-export const deleteTours = async (req, res) => {
+export const deleteEvent = async (req, res) => {
   try {
 
     const { fieldName, value } = req.query;
@@ -8,7 +8,7 @@ export const deleteTours = async (req, res) => {
     if (fieldName && value) {
       query[fieldName] = value;
     }
-    const data = await TOUR.deleteMany(query);
+    const data = await EVENT.deleteMany(query);
 
     // Check if any documents were deleted
     if (data.deletedCount === 0) {
