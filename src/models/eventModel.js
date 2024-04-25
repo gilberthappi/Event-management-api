@@ -4,28 +4,34 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const eventSchema = new mongoose.Schema({
       title: {
         type: String,
-        required: true
+        required: false
       },
       description: {
         type: String,
-        required: true
+        required: false
       },
       date: {
         type: String,
-        required: true
+        required: false
       },
       location: {
         type: String,
-        required: true
+        required: false
       },
       ticketsAvailable: {
-        type: Number,
-        required: true
+        type: String,
+        required: false,
+        enum: ['Available', 'Sold Out', 'Not Available', 'Free'],
+        default: 'Available'
       },
       price: {
         type: String,
-        required: true
+        required: false
       },
+      backdropImage: {
+        type: String,
+        required: false
+      }
 });
 eventSchema.plugin(mongoosePaginate);
 export const EVENT = mongoose.model('event', eventSchema);
