@@ -1,14 +1,15 @@
 import express from 'express';
 import {
-  getEvent, createEvent, updateEvent, deleteEvent
+  getEvent, createEvent, updateEvent, deleteEvent, getOneEvent,
 } from '../controllers/event';
 // import { verifyToken, isAdmin, uploads } from '../middleware';
 import { uploaded, verifyToken } from '../middleware';
+import { get } from 'mongoose';
 const eventRouter = express.Router();
 
 eventRouter.get('/all', getEvent);
 
-eventRouter.get('/getByField', getEvent);
+eventRouter.get('/getById/:id', getOneEvent);
 
 eventRouter.post('/addNew',  uploaded, createEvent);
 
@@ -67,24 +68,17 @@ eventRouter.delete('/delete', deleteEvent);
 
 /**
  * @swagger
- * /event/getByField:
+ * /event/getById/{id}:
  *   get:
  *     summary: Get a event by a specified 
  *     tags: [Events]
  *     description: Get a single event by a specified field (e.g., "_id" or "destination").
  *     parameters:
- *       - in: query
- *         name: fieldName
+ *       - in: path
+ *         name: id
+ *         required: true
  *         schema:
  *           type: string
- *         required: true
- *         description: The field name to search for (e.g., "_id" or "destination").
- *       - in: query
- *         name: value
- *         schema:
- *           type: string
- *         required: true
- *         description: The value to match in the specified field.
  *     responses:
  *       200:
  *         description: Event found successfully
