@@ -7,9 +7,6 @@ import {
   updateBooking,
   deleteBooking,
   getBookingsCount,
-  // getAllBookings,
-  // getAllBookingsAdmin,
-  // deleteBookingByIdAdmin,
 } from '../controllers/booking/bookingCrud.js';
 import { verifyToken, uploaded, isAdmin } from '../middleware'; // Make sure to import the necessary middleware
 
@@ -27,7 +24,7 @@ const bookingRoute = express.Router();
  *     Booking:
  *       type: 'object'
  *       properties:
- *         tourID:
+ *         eventID:
  *           type: 'string'
  *         UserID:
  *           type: 'string'
@@ -115,7 +112,7 @@ bookingRoute.get('/:id', getBookingById);
  *           schema:
  *             type: object
  *             properties:
- *               tourID:
+ *               eventID:
  *                 type: string
  *               UserID:
  *                 type: string
@@ -124,7 +121,7 @@ bookingRoute.get('/:id', getBookingById);
  *               NumberOfTicket:
  *                 type: string
  *             required:
- *               - tourID
+ *               - eventID
  *               - UserID
  *     responses:
  *       201:
@@ -157,7 +154,7 @@ bookingRoute.post('/book', uploaded, createBooking);
  *           schema:
  *             type: object
  *             properties:
- *               tourID:
+ *               eventID:
  *                 type: string
  *               paymentMethod:
  *                 type: string
