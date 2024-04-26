@@ -1,10 +1,11 @@
+import { number } from 'joi';
 import mongoose from 'mongoose';
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const bookingSchema = mongoose.Schema({
-    tourID: {
+    eventID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'TOUR', // Reference to the "TOUR" model
+        ref: 'EVENT', // Reference to the "TOUR" model
     },
     UserID: {
         type: mongoose.Schema.Types.ObjectId,
