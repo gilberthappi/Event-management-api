@@ -9,10 +9,10 @@ export const swaggerOptions = {
       },
       servers: [
         {
-          url: 'http://localhost:100/api/v1',
+         url: 'https://event-management-api-svlr.onrender.com/api/v1',
         },
         {
-          url: 'https://ajemel.onrender.com/api/v1',
+          url: 'http://localhost:100/api/v1', 
         },
       ],
       
