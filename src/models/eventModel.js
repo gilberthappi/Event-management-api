@@ -31,7 +31,8 @@ const eventSchema = new mongoose.Schema({
       backdropImage: {
         type: String,
         required: false
-      }
+      },
+      Status: { type: String, default: 'pending' },
 });
 eventSchema.plugin(mongoosePaginate);
 export const EVENT = mongoose.model('event', eventSchema);
