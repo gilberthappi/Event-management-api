@@ -16,7 +16,7 @@ const bookingSchema = mongoose.Schema({
         required: true
     },
     Status: { type: String, default: 'pending' },
-    NumberOfTicket: String,
+    numberOfTickets: String,
     isPayed: { type: Boolean, default: false},
     paymentMethod: String,
 });
