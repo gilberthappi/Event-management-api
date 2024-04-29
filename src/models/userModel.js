@@ -8,6 +8,10 @@ const userSchema = mongoose.Schema({
   fullNames: String,
   location: String,
   role: { type: String, default: 'user' },
+  backdropImage: {
+    type: String,
+    required: false
+  },
 
 });
 userSchema.plugin(mongoosePaginate);
