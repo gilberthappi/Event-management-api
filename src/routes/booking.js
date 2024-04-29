@@ -30,6 +30,8 @@ const bookingRoute = express.Router();
  *           type: 'string'
  *         isPayed:
  *           type: 'boolean'
+ *         numberOfTickets:
+ *           type: 'string'
  *         paymentMethod:
  *           type: 'string'
  */
@@ -118,7 +120,7 @@ bookingRoute.get('/:id', getBookingById);
  *                 type: string
  *               paymentMethod:
  *                 type: string
- *               NumberOfTicket:
+ *               numberOfTickets:
  *                 type: string
  *             required:
  *               - eventID
@@ -154,11 +156,9 @@ bookingRoute.post('/book', uploaded, createBooking);
  *           schema:
  *             type: object
  *             properties:
- *               eventID:
- *                 type: string
  *               paymentMethod:
  *                 type: string
- *               NumberOfTicket:
+ *               numberOfTickets:
  *                 type: string
  *     responses:
  *       200:
