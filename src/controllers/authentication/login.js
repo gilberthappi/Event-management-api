@@ -36,6 +36,7 @@ export const logIn = async (req, res) => {
         fullNames: User.fullNames,
         phoneNumber: User.phoneNumber,
         role: User.role,
+        id: User.id,
       },
     });
   } catch (error) {
