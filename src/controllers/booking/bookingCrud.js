@@ -65,16 +65,23 @@ export const getBookingById = async (req, res) => {
 
 // Update a booking by ID
 export const updateBooking = async (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    try {
-        const updatedBooking = await Booking.findByIdAndUpdate(id, req.body, { new: true });
-        if (!updatedBooking) return res.status(404).json({ message: 'Booking not found' });
-        res.status(200).json(updatedBooking);
-    } catch (error) {
-        console.error('Error updating a booking by ID:', error);
-        res.status(500).json({ message: 'Failed to update the booking' });
-    }
+  try {
+      // Find and update the booking by ID
+      const updatedBooking = await Booking.findByIdAndUpdate(id, req.body, { new: true });
+
+      // Check if the booking was found and updated successfully
+      if (!updatedBooking) {
+          return res.status(404).json({ message: 'Booking not found' });
+      }
+
+      // Return the updated booking
+      return res.status(200).json(updatedBooking);
+  } catch (error) {
+      console.error('Error updating a booking by ID:', error);
+      return res.status(500).json({ message: 'Failed to update the booking' });
+  }
 };
 
 // Delete a booking by ID
