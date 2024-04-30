@@ -12,6 +12,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: false
   },
+  Status: { type: String, default: 'Active' },
 
 });
 userSchema.plugin(mongoosePaginate);
